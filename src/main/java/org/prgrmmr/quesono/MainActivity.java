@@ -1,17 +1,46 @@
 package org.prgrmmr.quesono;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.widget.TimePicker;
+import android.widget.Toast;
+
+import java.util.Calendar;
+import java.util.logging.Logger;
 
 public class MainActivity extends Activity {
+
+    public static final String SUGESTOES = "sugestoes";
+    public static final String SUGESTOES_DORMIR = "sugestoesDormir";
+
+    TimePicker timePicker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        timePicker = (TimePicker) findViewById(R.id.timePicker);
+        timePicker.setIs24HourView(true);
     }
 
+    public void sugerirHoraDormir(View view) {
+        Intent intent = new Intent(this, SugestoesActivity.class);
+        intent.putExtra(SUGESTOES_DORMIR, true);
+        intent.putExtra(SUGESTOES, Calculadora.calcularHoraDormir(timePicker.getCurrentHour(), timePicker.getCurrentMinute()));
+        Log.d("horas", timePicker.getCurrentHour().toString());
+        startActivity(intent);
+    }
+
+    public void sugerirHoraAcordar(View view) {
+        Intent intent = new Intent(this, SugestoesActivity.class);
+        intent.putExtra(SUGESTOES_DORMIR, false);
+        intent.putExtra(SUGESTOES, Calculadora.calcularHoraAcordar());
+        startActivity(intent);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -19,5 +48,5 @@ public class MainActivity extends Activity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-    
+
 }

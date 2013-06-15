@@ -5,7 +5,15 @@
     </string>
     <string name="action_settings" >Settings
     </string>
-    <string name="hello_world" >Hello world!
+    <string name="calcular" >Calcular
+    </string>
+    <string name="zzz" >zzz
+    </string>
+
+    <string name="descricaoSugestoesAcordar" >Você deveria tentar acordar nestes horários:
+    </string>
+
+    <string name="descricaoSugestoesDormir" >Você deveria ir deitar nestes horários:
     </string>
 
 </resources>
