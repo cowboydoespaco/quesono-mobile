@@ -15,6 +15,18 @@
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="android:background">#8CC6DD</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="Btn">
+        <item name="android:width">200sp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+
+    <style name="Sugestao">
+        <item name="android:typeface">sans</item>
     </style>
 
 </resources>
