@@ -4,34 +4,38 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-    <TextView
+    <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="uh... This is awkward.."
-            android:id="@+id/txtSugestoes1"
-            android:layout_above="@+id/txtSugestoes2" android:layout_centerHorizontal="true"/>
-    <TextView
+            android:id="@+id/btnDespertador1"
+            android:layout_above="@+id/btnDespertador2" android:layout_centerHorizontal="true"
+            android:onClick="setarDespertador"/>
+    <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Large Text"
-            android:id="@+id/txtSugestoes2"
-            android:layout_above="@+id/txtSugestoes3" android:layout_alignLeft="@+id/txtSugestoes3"/>
-    <TextView
+            android:id="@+id/btnDespertador2"
+            android:layout_above="@+id/btnDespertador3" android:layout_alignLeft="@+id/btnDespertador3"
+            android:onClick="setarDespertador"/>
+    <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Large Text"
-            android:id="@+id/txtSugestoes3"
-            android:layout_centerVertical="true" android:layout_centerHorizontal="true"/>
-    <TextView
+            android:id="@+id/btnDespertador3"
+            android:layout_centerVertical="true" android:layout_centerHorizontal="true"
+            android:onClick="setarDespertador"/>
+    <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Large Text"
-            android:id="@+id/txtSugestoes4"
-            android:layout_below="@+id/txtSugestoes3" android:layout_centerHorizontal="true"/>
+            android:id="@+id/btnDespertador4"
+            android:layout_below="@+id/btnDespertador3" android:layout_centerHorizontal="true"
+            android:onClick="setarDespertador"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
