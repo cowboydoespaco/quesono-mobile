@@ -2,10 +2,6 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                android:paddingBottom="@dimen/activity_vertical_margin"
                 tools:context=".MainActivity"
                 style="@style/Body">
 
@@ -21,26 +17,32 @@
             android:text="@string/calcular"
             android:id="@+id/btnCalcular"
             android:onClick="sugerirHoraDormir"
-            style="@style/Btn" android:layout_below="@+id/timePicker" android:layout_centerHorizontal="true"/>
+            style="@style/Btn"
+            android:layout_below="@+id/timePicker"
+            android:layout_centerHorizontal="true"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/zzz"
             android:id="@+id/btnDormir"
             android:onClick="sugerirHoraAcordar"
-            style="@style/Btn"
-            android:layout_below="@+id/descricaoDormirAgora" android:layout_alignLeft="@+id/btnCalcular"/>
+            style="@style/Btn.MargemTopo"
+            android:layout_below="@+id/descricaoDormirAgora"
+            android:layout_alignLeft="@+id/btnCalcular"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/descricaoCalcular"
             android:id="@+id/descricaoCalcular"
-            android:layout_alignParentTop="true" android:layout_centerHorizontal="true"/>
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/descricaoDormirAgora"
-            android:id="@+id/descricaoDormirAgora" android:layout_below="@+id/btnCalcular" android:layout_centerHorizontal="true"/>
+            android:id="@+id/descricaoDormirAgora"
+            android:layout_below="@+id/btnCalcular"
+            android:layout_centerHorizontal="true"/>
 </RelativeLayout>
