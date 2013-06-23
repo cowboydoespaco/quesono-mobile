@@ -30,4 +30,20 @@
         Você deveria ir deitar nestes horários:
     </string>
 
+    <string name="tituloConfirmacaoDespertador" >
+        Preparar despertador
+    </string>
+
+    <string name="confirmacaoDespertador" >
+        Deseja preparar um despertador para este horário?
+    </string>
+
+    <string name="sim" >
+        Sim
+    </string>
+
+    <string name="nao" >
+        Não
+    </string>
+
 </resources>
