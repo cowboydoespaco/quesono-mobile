@@ -9,19 +9,27 @@ import android.os.Bundle;
 import android.provider.AlarmClock;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SugestoesActivity extends Activity {
+
+    private final String DORMINDO_X_CICLOS = "DORMINDO X CICLOS";
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //In order to make the gradient look good on all devices..
         getWindow().setFormat(PixelFormat.RGBA_8888);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DITHER);
         setContentView(R.layout.activity_sugestoes);
@@ -34,10 +42,37 @@ public class SugestoesActivity extends Activity {
             titulo.setText(R.string.descricaoSugestoesAcordar);
         }
 
-        String[] sugestoes = getIntent().getStringArrayExtra(MainActivity.SUGESTOES);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.list_item, R.id.txtHorario, sugestoes);
+        String[] from = { "horario", "numCiclos" };
+        int[] to = { R.id.txtHorario, R.id.txtNumCiclos };
 
-        ((ListView) findViewById(R.id.listViewSugestoes)).setAdapter(adapter);
+        String[] sugestoes = getIntent().getStringArrayExtra(MainActivity.SUGESTOES);
+        ArrayList<Map<String, String>> list = construirMapa(sugestoes);
+        SimpleAdapter adapter = new SimpleAdapter(this, list, R.layout.list_item, from, to);
+
+        ListView listView = (ListView) findViewById(R.id.listViewSugestoes);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                confirmacaoDespertador(view);
+            }
+        });
+    }
+
+    private ArrayList<Map<String, String>> construirMapa(String[] sugestoes) {
+        ArrayList<Map<String, String>> list = new ArrayList<Map<String, String>>();
+        list.add(createMap(sugestoes[3], this.DORMINDO_X_CICLOS.replace('X', '6')));
+        list.add(createMap(sugestoes[2], this.DORMINDO_X_CICLOS.replace('X', '5')));
+        list.add(createMap(sugestoes[1], this.DORMINDO_X_CICLOS.replace('X', '4')));
+        list.add(createMap(sugestoes[0], this.DORMINDO_X_CICLOS.replace('X', '3')));
+        return list;
+    }
+
+    private HashMap<String, String> createMap(String horario, String numCiclos) {
+        HashMap<String, String> item = new HashMap<String, String>();
+        item.put("horario", horario);
+        item.put("numCiclos", numCiclos);
+        return item;
     }
 
     public void confirmacaoDespertador(final View v) {
