@@ -98,7 +98,7 @@ public class SugestoesActivity extends Activity {
         Intent novoAlarme = new Intent(AlarmClock.ACTION_SET_ALARM);
         try {
             Calendar cal = Calendar.getInstance();
-            cal.setTime(new SimpleDateFormat("HH:mm").parse(((Button) v).getText().toString()));
+            cal.setTime(new SimpleDateFormat("HH:mm").parse(((TextView) v.findViewById(R.id.txtHorario)).getText().toString()));
             novoAlarme.putExtra(AlarmClock.EXTRA_HOUR, cal.get(Calendar.HOUR_OF_DAY));
             novoAlarme.putExtra(AlarmClock.EXTRA_MINUTES, cal.get(Calendar.MINUTE));
             novoAlarme.putExtra(AlarmClock.EXTRA_MESSAGE, "QueSono.com");
