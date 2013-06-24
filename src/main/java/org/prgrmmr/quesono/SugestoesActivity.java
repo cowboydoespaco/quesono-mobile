@@ -9,17 +9,27 @@ import android.os.Bundle;
 import android.provider.AlarmClock;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SugestoesActivity extends Activity {
+
+    private final String DORMINDO_X_CICLOS = "DORMINDO X CICLOS";
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //In order to make the gradient look good on all devices..
         getWindow().setFormat(PixelFormat.RGBA_8888);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DITHER);
         setContentView(R.layout.activity_sugestoes);
@@ -32,11 +42,37 @@ public class SugestoesActivity extends Activity {
             titulo.setText(R.string.descricaoSugestoesAcordar);
         }
 
+        String[] from = { "horario", "numCiclos" };
+        int[] to = { R.id.txtHorario, R.id.txtNumCiclos };
+
         String[] sugestoes = getIntent().getStringArrayExtra(MainActivity.SUGESTOES);
-        ((Button) findViewById(R.id.btnDespertador1)).setText(sugestoes[3]);
-        ((Button) findViewById(R.id.btnDespertador2)).setText(sugestoes[2]);
-        ((Button) findViewById(R.id.btnDespertador3)).setText(sugestoes[1]);
-        ((Button) findViewById(R.id.btnDespertador4)).setText(sugestoes[0]);
+        ArrayList<Map<String, String>> list = construirMapa(sugestoes);
+        SimpleAdapter adapter = new SimpleAdapter(this, list, R.layout.list_item, from, to);
+
+        ListView listView = (ListView) findViewById(R.id.listViewSugestoes);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                confirmacaoDespertador(view);
+            }
+        });
+    }
+
+    private ArrayList<Map<String, String>> construirMapa(String[] sugestoes) {
+        ArrayList<Map<String, String>> list = new ArrayList<Map<String, String>>();
+        list.add(createMap(sugestoes[3], this.DORMINDO_X_CICLOS.replace('X', '6')));
+        list.add(createMap(sugestoes[2], this.DORMINDO_X_CICLOS.replace('X', '5')));
+        list.add(createMap(sugestoes[1], this.DORMINDO_X_CICLOS.replace('X', '4')));
+        list.add(createMap(sugestoes[0], this.DORMINDO_X_CICLOS.replace('X', '3')));
+        return list;
+    }
+
+    private HashMap<String, String> createMap(String horario, String numCiclos) {
+        HashMap<String, String> item = new HashMap<String, String>();
+        item.put("horario", horario);
+        item.put("numCiclos", numCiclos);
+        return item;
     }
 
     public void confirmacaoDespertador(final View v) {
@@ -62,7 +98,7 @@ public class SugestoesActivity extends Activity {
         Intent novoAlarme = new Intent(AlarmClock.ACTION_SET_ALARM);
         try {
             Calendar cal = Calendar.getInstance();
-            cal.setTime(new SimpleDateFormat("HH:mm").parse(((Button) v).getText().toString()));
+            cal.setTime(new SimpleDateFormat("HH:mm").parse(((TextView) v.findViewById(R.id.txtHorario)).getText().toString()));
             novoAlarme.putExtra(AlarmClock.EXTRA_HOUR, cal.get(Calendar.HOUR_OF_DAY));
             novoAlarme.putExtra(AlarmClock.EXTRA_MINUTES, cal.get(Calendar.MINUTE));
             novoAlarme.putExtra(AlarmClock.EXTRA_MESSAGE, "QueSono.com");
