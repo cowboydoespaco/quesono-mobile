@@ -21,7 +21,7 @@
             android:id="@+id/btnDespertador1"
             android:layout_above="@+id/btnDespertador2"
             android:layout_centerHorizontal="true"
-            android:onClick="setarDespertador"
+            android:onClick="confirmacaoDespertador"
             style="@style/Btn"/>
     <Button
             android:layout_width="wrap_content"
@@ -31,7 +31,7 @@
             android:id="@+id/btnDespertador2"
             android:layout_above="@+id/btnDespertador3"
             android:layout_alignLeft="@+id/btnDespertador3"
-            android:onClick="setarDespertador"
+            android:onClick="confirmacaoDespertador"
             style="@style/Btn"/>
     <Button
             android:layout_width="wrap_content"
@@ -41,7 +41,7 @@
             android:id="@+id/btnDespertador3"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
-            android:onClick="setarDespertador"
+            android:onClick="confirmacaoDespertador"
             style="@style/Btn"/>
     <Button
             android:layout_width="wrap_content"
