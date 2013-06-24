@@ -35,7 +35,7 @@ public class SugestoesActivity extends Activity {
         }
 
         String[] sugestoes = getIntent().getStringArrayExtra(MainActivity.SUGESTOES);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.list_item, sugestoes);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.list_item, R.id.txtHorario, sugestoes);
 
         ((ListView) findViewById(R.id.listViewSugestoes)).setAdapter(adapter);
     }

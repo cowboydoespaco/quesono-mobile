@@ -2,14 +2,25 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                style="@style/Lista">
 
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Large Text"
-            android:id="@+id/textView" android:layout_centerVertical="true" android:layout_alignParentLeft="true"/>
+            android:id="@+id/txtHorario"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="dormindo x ciclos"
+            android:id="@+id/txtNumCiclos"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/txtHorario"/>
     <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

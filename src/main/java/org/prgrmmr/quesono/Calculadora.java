@@ -23,7 +23,7 @@ public class Calculadora {
         for (int i=1; i <= 6; i++) {
             cal.add(Calendar.MINUTE, -90);
             if (i > 2) {
-                sugestoes[j] = formatter.format(cal.getTime()) + ", dormindo " + i + " ciclos";
+                sugestoes[j] = formatter.format(cal.getTime());
                 j++;
             }
         }
@@ -40,7 +40,7 @@ public class Calculadora {
         for (int i=1; i <= 6; i++) {
             cal.add(Calendar.MINUTE, 90);
             if (i > 2) {
-                sugestoes[j] = formatter.format(cal.getTime()) + ", dormindo " + i + " ciclos";
+                sugestoes[j] = formatter.format(cal.getTime());
                 j++;
             }
         }
