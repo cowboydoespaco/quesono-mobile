@@ -12,7 +12,8 @@
             android:text="Large Text"
             android:id="@+id/txtTituloSugestoes"
             android:layout_alignParentTop="true"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:layout_marginBottom="20dp"/>
     <ListView
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
