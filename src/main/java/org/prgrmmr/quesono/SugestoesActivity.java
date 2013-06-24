@@ -9,7 +9,9 @@ import android.os.Bundle;
 import android.provider.AlarmClock;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,10 +35,9 @@ public class SugestoesActivity extends Activity {
         }
 
         String[] sugestoes = getIntent().getStringArrayExtra(MainActivity.SUGESTOES);
-        ((Button) findViewById(R.id.btnDespertador1)).setText(sugestoes[3]);
-        ((Button) findViewById(R.id.btnDespertador2)).setText(sugestoes[2]);
-        ((Button) findViewById(R.id.btnDespertador3)).setText(sugestoes[1]);
-        ((Button) findViewById(R.id.btnDespertador4)).setText(sugestoes[0]);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.list_item, sugestoes);
+
+        ((ListView) findViewById(R.id.listViewSugestoes)).setAdapter(adapter);
     }
 
     public void confirmacaoDespertador(final View v) {
