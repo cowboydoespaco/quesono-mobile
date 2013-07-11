@@ -18,14 +18,11 @@ import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class SugestoesActivity extends Activity {
 
-    private final String DORMINDO_X_CICLOS = "DORMINDO X CICLOS";
+    private static final String DORMINDO_X_CICLOS = "DORMINDO X CICLOS";
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,10 +58,10 @@ public class SugestoesActivity extends Activity {
 
     private ArrayList<Map<String, String>> construirMapa(String[] sugestoes) {
         ArrayList<Map<String, String>> list = new ArrayList<Map<String, String>>();
-        list.add(createMap(sugestoes[3], this.DORMINDO_X_CICLOS.replace('X', '6')));
-        list.add(createMap(sugestoes[2], this.DORMINDO_X_CICLOS.replace('X', '5')));
-        list.add(createMap(sugestoes[1], this.DORMINDO_X_CICLOS.replace('X', '4')));
-        list.add(createMap(sugestoes[0], this.DORMINDO_X_CICLOS.replace('X', '3')));
+        list.add(createMap(sugestoes[3], DORMINDO_X_CICLOS.replace('X', '6')));
+        list.add(createMap(sugestoes[2], DORMINDO_X_CICLOS.replace('X', '5')));
+        list.add(createMap(sugestoes[1], DORMINDO_X_CICLOS.replace('X', '4')));
+        list.add(createMap(sugestoes[0], DORMINDO_X_CICLOS.replace('X', '3')));
         return list;
     }
 
